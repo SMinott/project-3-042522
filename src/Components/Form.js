@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Test() {
+function Form() {
   return (
     <div>
-      
+      CRUD Activities
     </div>
   )
 }
 
-export default Test
+export default Form

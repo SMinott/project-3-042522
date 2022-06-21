@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
+import GroceryCategory from './Components/GroceryCategory';
+import GroceryContainer from './Components/GroceryContainer';
+import Form from './Components/Form'
+// import { CATEGORIES, GROCERY } from "./data";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      
+      <h1> Grocery Shopping List</h1>
+      
+      <nav>
+        <ul className="linkClass">
+          <li> <Link to='/'> Form - Edit Grocery List </Link> </li>
+          <li> <Link to='categories' > Grocery Category </Link> </li>
+        </ul>
+      </nav>
+
+        <Routes>
+          <Route path='/' element={<Form/>} />
+          <Route path='categories' element={<GroceryCategory/>} />
+          <Route path='container' element={<GroceryContainer/>} />
+        </Routes>
+      </Router>
     </div>
   );
 }
