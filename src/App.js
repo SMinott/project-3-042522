@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 import GroceryCategory from './Components/GroceryCategory';
 import GroceryContainer from './Components/GroceryContainer';
 import Form from './Components/Form'
-// import { CATEGORIES, GROCERY } from "./data";
 
 
 function App() {
@@ -24,8 +23,8 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Form/>} />
-          <Route path='categories' element={<GroceryCategory/>} />
-          <Route path='container' element={<GroceryContainer/>} />
+          <Route path='categories' element={<GroceryCategory />} />
+          <Route path='container' element={<GroceryContainer />} />
         </Routes>
       </Router>
     </div>
