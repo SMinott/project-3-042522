@@ -4,7 +4,7 @@ import GroceryItem from './GroceryItem'
 function GroceryContainer() {
 
   // const renderList = ____ .map((item) => {
-  //   <GroceryItem key={item.id} item={item} />
+  //   return <GroceryItem key={item.id} item={item} />
   // })
 
   return (

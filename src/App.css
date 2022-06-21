@@ -1,5 +1,35 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(#f7efef, #e6dcdc);
+  min-height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .App {
   text-align: center;
+  margin: 4rem auto;
+  width: 100%;
+  max-width: 30rem;
+}
+
+h2 {
+  margin-bottom: 0.25rem;
+  margin-top: 0;
+  padding-top: 0.25rem;
 }
 
 /* The Links Only */
@@ -19,8 +49,44 @@ li {
 }
 
 li:hover { 
-  background-color: #FF0078;
+  background-color: yellowgreen;
   height: 40px;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+/* The buttons Only */
+button.toggle {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #d2d6d9;
+  color: #494949;
+  border: solid #a0a0a0 0.1rem;
+}
+
+button.toggle.on {
+  background: #d3edff;
+  color: #0798ff;
+  border: solid #0798ff 0.1rem;
+}
+
+button.toggle.on:before {
+  content: "";
+  background: #d3edff;
+  position: absolute;
+  transform-origin: center;
+  transform: scale(0);
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  animation: grow 0.75s;
+}
+
+button.toggle:focus {
+  outline: none;
 }

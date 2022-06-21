@@ -3,7 +3,7 @@ import React from 'react'
 function Form() {
   return (
     <div>
-      CRUD Activities
+      <h2>CRUD Activities go here</h2>
     </div>
   )
 }
