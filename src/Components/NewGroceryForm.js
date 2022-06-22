@@ -1,24 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
-function NewGroceryForm({ handleAddGrocery }) {
+function NewGroceryForm({ handleAddGrocery , setCategory, category }) {
+    const [selectCategory, setSelectedCategory] = useState("")
     const [formData, setFormData] = useState({
         name: "",
         category: "",
-    })
+        })
 
+
+const handleDropdown = (event) => {
+    setSelectedCategory ({
+        ...selectCategory,
+        [event.target.name]: event.target.value
+    })
+}
 const handleChange = (event) => {
     setFormData ({
       ...formData,
       [event.target.name]: event.target.value
     })
   }
+        useEffect(() => {
+            fetch("http://localhost:9292/categories")
+              .then((r) => r.json())
+              .then((category) => setCategory(category));
+          }, []);
 
 function handleSubmit (e) {
     e.preventDefault()
     const groceryData = {
         name: formData.name,
         category: formData.category,
+        category_id: formData.category_id
     }
 
     fetch('http://localhost:9292/groceries', {
@@ -33,6 +47,7 @@ function handleSubmit (e) {
         setFormData({ 
             name: "",
             category: "",
+            category_id: "",
         })
     })
 }
@@ -46,12 +61,12 @@ function handleSubmit (e) {
         placeholder="name" 
         value={formData.name}
         />
-      <input
-        name="category" 
-        onChange={handleChange}
-        placeholder="Category"
-        value={formData.category} 
-        />
+        <select>
+        {category?.map((cat) => 
+        <option onChange={handleDropdown} value={cat.name}>{cat.name}</option>)}
+
+
+        </select> 
       <input type="submit" value="Add to List" />
     </form>
   );
@@ -59,3 +74,6 @@ function handleSubmit (e) {
 
 export default NewGroceryForm;
 
+
+// {category?.map((cat) => 
+    // <option onChange={handleDropdown} value={cat.name}>{cat.name}</option>)}
