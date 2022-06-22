@@ -1,9 +1,9 @@
 import './App.css';
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
-import GroceryCategory from './GroceryCategory';
-import GroceryContainer from './GroceryContainer';
-import Form from './Form'
+import GroceryCategory from './GroceryList';
+import GroceryContainer from './CategoryFilter';
+import Form from './NewGroceryForm'
 
 
 function App() {
