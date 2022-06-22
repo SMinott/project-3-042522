@@ -1,44 +1,46 @@
-import React from 'react'
+import React, {useEffect, useState} from "react";
 
-function GroceryItem({ item }) {
-
-    const { category, foodItem} = item
-  return (
-    <div>
-      <h2>Grocery Items will be listed here</h2>
-    </div>
-  )
-}
-
-export default GroceryItem
-
-
-
-
-
-
-//  import React from "react";
-
-// function Grocery({ id, text, category, onDeleteGrocery }) {
-
-// //   const handleClick = () => {
-// //     onDeleteGrocery(text)
-// //   }
-
-//   const handleDelete = () => {
-//       fetch(`http://localhost:9292/groceries/${id}`, {
-//           method: "DELETE"
-//       })
-//       onDeleteGrocery(id)
+function Grocery({ grocery, handleDeleteGrocery }) {
+    const { id, name, category_id } = grocery;
+    const [ isDone, setIsDone ] = useState(true)
+//   const handleClick = () => {
+//     onDeleteGrocery(name)
 //   }
 
-//   return (
-//     <div className="grocery">
-//       <div className="label">{category}</div>
-//       <div className="text">{text}</div>
-//       <button className="delete" onClick={handleDelete}>🗑</button>
-//     </div>
-//   );
-// }
+useEffect(() => {
+    console.log(grocery)
+}, [])
 
-// export default Grocery;
+    const handleClick = () => {
+        setIsDone(isDone => !isDone)
+    }
+
+  const handleDelete= () => {
+      fetch(`http://localhost:9292/groceries/${id}`, {
+          method: "DELETE"
+      })
+      handleDeleteGrocery(id)
+  }
+
+
+  
+
+  return (
+    // <div className="grocery">
+    //   <div className="label">{category}</div>
+    //   <div className="name">{name}</div>
+    //   <button className="delete" onClick={handleDelete}>🗑</button>
+    // </div>
+
+    <div>
+    <h2>{name}</h2>
+    <h3>{grocery.category && grocery.category["name"]}</h3>
+    <button onClick={handleClick}>
+      { isDone ? "🗸" : "☑"}
+      </button>
+      <button className="delete" onClick={handleDelete}>🗑</button>
+  </div>
+  );
+}
+
+export default Grocery;
