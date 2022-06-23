@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 function Grocery({ grocery, handleDeleteGrocery }) {
-    const { id, name, category_id } = grocery;
+    const { id, name } = grocery;
     const [ isDone, setIsDone ] = useState(true)
 //   const handleClick = () => {
 //     onDeleteGrocery(name)
@@ -26,16 +26,11 @@ useEffect(() => {
   
 
   return (
-    // <div className="grocery">
-    //   <div className="label">{category}</div>
-    //   <div className="name">{name}</div>
-    //   <button className="delete" onClick={handleDelete}>🗑</button>
-    // </div>
 
     <div>
     <h2>{name}</h2>
     <h3>{grocery.category && grocery.category["name"]}</h3>
-    <button onClick={handleClick}>
+    <button className="checkmark" onClick={handleClick}>
       { isDone ? "🗸" : "☑"}
       </button>
       <button className="delete" onClick={handleDelete}>🗑</button>
